@@ -8,7 +8,7 @@
             "methods": [
                 "get"
             ],
-            "route": "todos"
+            "route": "dummy-func"
         },
         {
             "type": "http",
