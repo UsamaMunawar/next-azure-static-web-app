@@ -4,7 +4,13 @@ import { getAllTasks } from '../services/ToDoService';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  console.log(getAllTasks());
+  getAllTasks()
+    .then((res) => {
+      console.log({ res });
+    })
+    .catch((err) => {
+      console.log({ err });
+    });
   return (
     <div className={styles.container}>
       <Head>
