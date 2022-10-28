@@ -3,14 +3,15 @@ import Image from 'next/image';
 import { getAllTasks } from '../services/ToDoService';
 import styles from '../styles/Home.module.css';
 
-export default function Home() {
-  getAllTasks()
-    .then((res) => {
-      console.log({ res });
-    })
-    .catch((err) => {
-      console.log({ err });
-    });
+export default function Home(props) {
+  console.log({ props });
+  // getAllTasks()
+  //   .then((res) => {
+  //     console.log({ res });
+  //   })
+  //   .catch((err) => {
+  //     console.log({ err });
+  //   });
   return (
     <div className={styles.container}>
       <Head>
@@ -74,4 +75,13 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const queryResponse = await getAllTasks();
+  return {
+    props: {
+      data: queryResponse,
+    },
+  };
 }
