@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { getAllTasks } from '../services/ToDoService';
 import styles from '../styles/Home.module.css';
 
-export default function Home(props) {
+function Home(props) {
   console.log({ props });
   // getAllTasks()
   //   .then((res) => {
@@ -85,3 +85,5 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+export default Home;
