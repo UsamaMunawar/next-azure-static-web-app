@@ -76,14 +76,3 @@ function Home(props) {
     </div>
   );
 }
-
-export async function getServerSideProps(context) {
-  const queryResponse = await getAllTasks();
-  return {
-    props: {
-      data: queryResponse,
-    },
-  };
-}
-
-export default Home;
