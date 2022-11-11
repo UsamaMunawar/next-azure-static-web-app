@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "SET NODE_ENV='development' node server.js",
-    "build": "next build && next export",
+    "next-dev": "next dev",
+    "build": "next build ",
     "start": "next start",
     "lint": "next lint"
   },
