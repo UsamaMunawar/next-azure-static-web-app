@@ -3,14 +3,21 @@ import Image from 'next/image';
 import { getAllTasks } from '../services/ToDoService';
 import styles from '../styles/Home.module.css';
 
-function Home(props) {
-  getAllTasks()
-    .then((res) => {
-      console.log({ res });
-    })
-    .catch((err) => {
-      console.log({ err });
-    });
+export async function getServerSideProps() {
+  const data = JSON.stringify({ time: new Date() });
+  return { props: { data } };
+}
+
+export default function Home({ data }) {
+  const serverData = JSON.parse(data);
+  console.log({ serverData });
+  // getAllTasks()
+  //   .then((res) => {
+  //     console.log({ res });
+  //   })
+  //   .catch((err) => {
+  //     console.log({ err });
+  //   });
   return (
     <div className={styles.container}>
       <Head>
@@ -75,5 +82,3 @@ function Home(props) {
     </div>
   );
 }
-
-export default Home;
