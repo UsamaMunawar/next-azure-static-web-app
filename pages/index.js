@@ -4,6 +4,7 @@ import { getAllTasks } from '../services/ToDoService';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
+  getAllTasks();
   return (
     <div className={styles.container}>
       <Head>
