@@ -1,4 +1,7 @@
-const { BlobServiceClient } = require('@azure/storage-blob');
+const {
+  BlobServiceClient,
+  StorageSharedKeyCredential,
+} = require('@azure/storage-blob');
 const { DefaultAzureCredential } = require('@azure/identity');
 const { v1: uuidv1 } = require('uuid');
 require('dotenv').config();
@@ -13,10 +16,14 @@ module.exports = async function main(updateArray) {
     if (!accountName) throw Error('Azure Storage accountName not found');
 
     updateArray('creating blob service client');
+    const sharedKeysCredential = new StorageSharedKeyCredential(
+      'todonextappstorage',
+      'enSkivriYM975BbuuFR/fkxcf3IfSHN8LLYVLYuCGtts6YTV7zPebPV2xuGl97QuhE7zX8HtIZ9B+AStPYSKUw=='
+    );
 
     const blobServiceClient = new BlobServiceClient(
       `https://${accountName}.blob.core.windows.net`,
-      new DefaultAzureCredential()
+      sharedKeysCredential
     );
 
     updateArray('creating blob service client created');
