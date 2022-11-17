@@ -97,7 +97,8 @@ module.exports = async function main(updateArray) {
     //   deleteContainerResponse.requestId
     // );
   } catch (error) {
-    console.log(`Error:::: ${error.message}`);
+    return error;
+    // console.log(`Error:::: ${error.message}`);
   }
 };
 

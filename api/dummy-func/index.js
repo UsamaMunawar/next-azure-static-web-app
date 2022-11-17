@@ -9,7 +9,7 @@ module.exports = async function (context, req) {
   function updateArray(data) {
     newArray.push(data);
   }
-  await blobTesting(updateArray);
+  let response = await blobTesting(updateArray);
   // .then((res) => {
   //   console.log({ res });
   //   another = 'I was in done';
@@ -24,6 +24,6 @@ module.exports = async function (context, req) {
 
   context.res = {
     // status: 200, /* Defaults to 200 */
-    body: { responseMessage, newArray: newArray },
+    body: { responseMessage, newArray: newArray, response: response },
   };
 };
