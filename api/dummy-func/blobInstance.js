@@ -3,7 +3,7 @@ const { DefaultAzureCredential } = require('@azure/identity');
 const { v1: uuidv1 } = require('uuid');
 require('dotenv').config();
 
-export default async function main() {
+module.exports = async function main() {
   try {
     console.log('Azure Blob Storage - JavaScript Quick Sample');
 
@@ -82,7 +82,7 @@ export default async function main() {
   } catch (error) {
     console.log(`Error:::: ${error.message}`);
   }
-}
+};
 
 // Convert stream to text
 async function streamToText(readable) {
