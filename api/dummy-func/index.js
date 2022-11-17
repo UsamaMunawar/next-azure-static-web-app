@@ -5,8 +5,11 @@ module.exports = async function (context, req) {
   context.log('JavaScript HTTP trigger function processed a request.');
 
   const name = req.query.name || (req.body && req.body.name);
-  let another = '';
-  let xyz = await blobTesting();
+  let newArray = [];
+  function updateArray(data) {
+    newArray.push(data);
+  }
+  await blobTesting(updateArray);
   // .then((res) => {
   //   console.log({ res });
   //   another = 'I was in done';
@@ -21,6 +24,6 @@ module.exports = async function (context, req) {
 
   context.res = {
     // status: 200, /* Defaults to 200 */
-    body: { responseMessage, xyz },
+    body: { responseMessage, newArray: newArray },
   };
 };

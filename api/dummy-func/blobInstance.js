@@ -3,7 +3,7 @@ const { DefaultAzureCredential } = require('@azure/identity');
 const { v1: uuidv1 } = require('uuid');
 require('dotenv').config();
 
-module.exports = async function main() {
+module.exports = async function main(updateArray) {
   try {
     console.log('Azure Blob Storage - JavaScript Quick Sample');
 
@@ -12,23 +12,34 @@ module.exports = async function main() {
     console.log(accountName);
     if (!accountName) throw Error('Azure Storage accountName not found');
 
+    updateArray('creating blob service client');
+
     const blobServiceClient = new BlobServiceClient(
       `https://${accountName}.blob.core.windows.net`,
       new DefaultAzureCredential()
     );
 
+    updateArray('creating blob service client created');
+    updateArray('creating container name');
+
     const containerName = 'quickstart' + uuidv1();
     console.log('\nCreating Container...');
     console.log('\t', containerName);
+    updateArray('container name created');
+    updateArray('creating container client');
 
     //get a reference to a container
     const containerClient = blobServiceClient.getContainerClient(containerName);
+    updateArray('creating container client complete');
+
+    updateArray('executing create function');
 
     //create the container
     const createContainerResponse = await containerClient.create();
     console.log(
       `Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`
     );
+    updateArray('create function complete');
 
     return {
       message: `Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`,
