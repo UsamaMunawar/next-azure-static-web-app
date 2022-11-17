@@ -31,8 +31,7 @@ module.exports = async function main() {
     );
 
     return {
-      message:
-        '`Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`',
+      message: `Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`,
     };
 
     // // Create a unique name for the blob

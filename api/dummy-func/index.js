@@ -6,20 +6,21 @@ module.exports = async function (context, req) {
 
   const name = req.query.name || (req.body && req.body.name);
   let another = '';
-  await blobTesting()
-    .then(() => {
-      another = 'I was in done';
-    })
-    .catch((ex) => {
-      another = ex.message;
-      console.log(ex.message);
-    });
+  let xyz = await blobTesting();
+  // .then((res) => {
+  //   console.log({ res });
+  //   another = 'I was in done';
+  // })
+  // .catch((ex) => {
+  //   another = ex.message;
+  //   console.log(ex.message);
+  // });
   const responseMessage = name
     ? 'Hello, ' + name + '. This HTTP triggered function executed successfully.'
     : 'This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.';
 
   context.res = {
     // status: 200, /* Defaults to 200 */
-    body: { responseMessage, another },
+    body: { responseMessage, xyz },
   };
 };
