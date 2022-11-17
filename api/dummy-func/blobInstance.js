@@ -39,7 +39,9 @@ module.exports = async function main(updateArray) {
     console.log(
       `Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`
     );
-    updateArray('create function complete');
+    updateArray(
+      `create function complete ${createContainerResponse.requestId} ${containerClient.url}`
+    );
 
     return {
       message: `Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`,
