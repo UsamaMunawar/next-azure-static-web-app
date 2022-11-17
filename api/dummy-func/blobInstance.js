@@ -30,6 +30,11 @@ module.exports = async function main() {
       `Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`
     );
 
+    return {
+      message:
+        '`Container was created successfully. \n\trequestId:${createContainerResponse.requestId}\n\tURL: ${containerClient.url}`',
+    };
+
     // // Create a unique name for the blob
     // const blobName = 'quickstart' + uuidv1() + '.txt';
 
