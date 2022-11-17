@@ -4,9 +4,19 @@
   "description": "",
   "scripts": {
     "start": "func start",
-    "test": "echo \"No tests yet...\""
+    "test": "echo \"No tests yet...\"",
+    "start-azurite": "azurite --silent --location azureStorage --debug azureStorage/debug.log"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@azure/functions": "^3.2.0",
+    "@azure/identity": "^3.1.0",
+    "@azure/storage-blob": "^12.12.0",
+    "azurite": "^3.20.1",
+    "dotenv": "^16.0.3",
+    "http-status-enum": "^1.0.2",
+    "parse-multipart": "^1.0.4",
+    "uuid": "^9.0.0"
+  },
   "devDependencies": {
     "azure-functions-core-tools": "^4.x"
   }
